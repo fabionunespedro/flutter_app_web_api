@@ -3,7 +3,10 @@ import 'package:flutter_app_web_api/helpers/phrases.dart';
 import '../models/journal.dart';
 import 'package:uuid/uuid.dart';
 
-Map<String, Journal> generateRandomDatabase({required int maxGap, required int amount}) {
+Map<String, Journal> generateRandomDatabase({
+  required int maxGap,
+  required int amount,
+}) {
   Random rng = Random();
 
   Map<String, Journal> map = {};
@@ -13,7 +16,12 @@ Map<String, Journal> generateRandomDatabase({required int maxGap, required int a
     DateTime date = DateTime.now().subtract(Duration(days: timeGap));
     String id = const Uuid().v1();
 
-    map[id] = Journal(id: id, content: getRandomPhrase(), createdAt: date, updatedAt: date);
+    map[id] = Journal(
+      id: id,
+      content: getRandomPhrase(),
+      createdAt: date,
+      updatedAt: date,
+    );
   }
   return map;
 }

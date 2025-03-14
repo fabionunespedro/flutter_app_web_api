@@ -8,15 +8,25 @@ List<JournalCard> generateListJournalCards({
 }) {
   List<JournalCard> list = List.generate(
     windowPage + 1,
-    (index) => JournalCard(showedDate: currentDay.subtract(Duration(days: (windowPage) - index))),
+    (index) => JournalCard(
+      showedDate: currentDay.subtract(Duration(days: (windowPage) - index)),
+    ),
   );
 
   database.forEach((key, value) {
-    if (value.createdAt.isAfter(currentDay.subtract(Duration(days: windowPage)))) {
+    if (value.createdAt.isAfter(
+      currentDay.subtract(Duration(days: windowPage)),
+    )) {
       int difference =
-          value.createdAt.difference(currentDay.subtract(Duration(days: windowPage))).inDays.abs();
+          value.createdAt
+              .difference(currentDay.subtract(Duration(days: windowPage)))
+              .inDays
+              .abs();
 
-      list[difference] = JournalCard(showedDate: list[difference].showedDate, journal: value);
+      list[difference] = JournalCard(
+        showedDate: list[difference].showedDate,
+        journal: value,
+      );
     }
   });
   return list;
