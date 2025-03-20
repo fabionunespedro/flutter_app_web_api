@@ -15,7 +15,6 @@ class _HomeScreenState extends State<HomeScreen> {
   DateTime currentDay = DateTime.now();
 
   int windowPage = 10;
-
   Map<String, Journal> database = {};
 
   final ScrollController _listScrollController = ScrollController();
@@ -30,9 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "${currentDay.day}  |  ${currentDay.month}  |  ${currentDay.year}",
-        ),
+        title: Text("${currentDay.day}  |  ${currentDay.month}  |  ${currentDay.year}"),
       ),
       body: ListView(
         controller: _listScrollController,

@@ -59,10 +59,7 @@ class JournalCard extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     journal!.content,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 3,
                   ),
@@ -74,7 +71,9 @@ class JournalCard extends StatelessWidget {
       );
     } else {
       return InkWell(
-        onTap: () {},
+        onTap: () {
+          callAddJournalScreen(context);
+        },
         child: Container(
           height: 115,
           alignment: Alignment.center,
@@ -86,5 +85,9 @@ class JournalCard extends StatelessWidget {
         ),
       );
     }
+  }
+
+  callAddJournalScreen(BuildContext context) {
+    Navigator.pushNamed(context, 'add-journal');
   }
 }
